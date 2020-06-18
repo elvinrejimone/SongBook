@@ -1,0 +1,43 @@
+[
+  {
+    "id": "1",
+    "song_name": "Turn It Up",
+    "artist": "PlanetShakers",
+    "type": "lyrics",
+    "storageType": "preLoaded",
+    "chord": "E",
+    "song_lyric": "testTurnItUp3",
+    "starting": "T"
+  },
+
+  {
+    "id": "2",
+    "song_name": "Beautiful One",
+    "artist": "Tim Hughes",
+    "type": "lyrics",
+    "storageType": "preLoaded",
+    "chord": "C",
+    "song_lyric": "testBeautiful1",
+    "starting": "B"
+  },
+  {
+    "id": "3",
+    "song_name": "Amazing Grace",
+    "song_lyric": "testamazingGrace1",
+    "artist": "John Newton",
+    "type": "lyrics",
+    "chord": "G",
+    "storageType": "preLoaded",
+    "starting": "A"
+  },
+  {
+    "id": "4",
+    "song_name": "Welcome Holy Spirit",
+    "song_lyric": "testwelcomeHoly1",
+    "artist": "Mark Condon",
+    "type": "lyrics",
+    "chord": "F",
+    "storageType": "preLoaded",
+    "starting": "W"
+  }
+]
