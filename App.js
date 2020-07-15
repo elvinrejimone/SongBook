@@ -2,6 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import SongView from "./screens/SongView/SongView";
+import AddSong from "./screens/AddSong/AddSong";
 
 import useCachedResources from "./hooks/useCachedResources";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
@@ -21,10 +23,28 @@ export default function App(props) {
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator
             screenOptions={{
-              headerShown: false,
+              headerStyle: { backgroundColor: "tomato" },
+              headerTintColor: "#fff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
             }}
           >
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen
+              options={{ headerShown: false }}
+              name="SongBook"
+              component={BottomTabNavigator}
+            />
+            <Stack.Screen
+              name="SongView"
+              component={SongView}
+              options={({ route }) => ({ title: route.params.name })}
+            />
+            <Stack.Screen
+              name="AddSong"
+              component={AddSong}
+              options={() => ({ title: "Add a new Song" })}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

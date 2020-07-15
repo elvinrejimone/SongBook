@@ -6,7 +6,6 @@ import {
   Image,
   Alert,
   ToastAndroid,
-  ActionSheetIOS,
   ActivityIndicator,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -14,6 +13,8 @@ import { SearchBar, ListItem, Text, Button, Icon } from "react-native-elements";
 import AsyncStorage from "@react-native-community/async-storage";
 import preLoadedSongList from "./SongList.json";
 import ActionSheet from "react-native-actionsheet";
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("db.testDb"); // returns Database object
 
 class SearchableList extends React.Component {
   state = {
@@ -25,8 +26,13 @@ class SearchableList extends React.Component {
   };
   constructor() {
     super();
-    //   this.storeData(preLoadedSongList);
-    console.log("**********");
+    //this.storeData(preLoadedSongList);
+    // Check if the items table exists if not create it
+    db.transaction((tx) => {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS testSongs (id TEXT PRIMARY KEY, song_name  TEXT, artist TEXT, starting TEXT, type  TEXT, storagetype TEXT, lyrics TEXT,language  TEXT, chord TEXT, isFavorite INT,imageurls TEXT)"
+      );
+    });
     this.getData();
   }
 
@@ -62,7 +68,6 @@ class SearchableList extends React.Component {
         this.storeData(preLoadedSongList);
       } else {
         if (this.state.songListLoaded == false) {
-          console.log("Got SongList!");
           // console.log(jsonValue);
           this.setState({
             backupList: jsonValue,
@@ -191,6 +196,9 @@ class SearchableList extends React.Component {
                     name: item.song_name,
                     lyrics: item.song_lyric,
                     item: item,
+                    playlist: [],
+                    playlistIndex: 0,
+                    isplayList: false,
                     option: "view",
                   });
                 }}

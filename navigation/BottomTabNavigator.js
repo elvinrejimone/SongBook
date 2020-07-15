@@ -2,8 +2,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
 
 import TabBarIcon from "../components/TabBarIcon";
-import HomeScreen from "../screens/SongBook/HomeScreen";
-import LinksScreen from "../screens/PlayList/LinksScreen";
+import SongBook from "../screens/SongBook/SongBook";
+import SetListStack from "../screens/PlayList/SetlistStack";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -16,6 +16,13 @@ export default function BottomTabNavigator({ navigation, route }) {
 
   return (
     <BottomTab.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "tomato" },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
       tabBarOptions={{
         keyboardHidesTabBar: true,
         activeTintColor: "tomato",
@@ -24,22 +31,33 @@ export default function BottomTabNavigator({ navigation, route }) {
       initialRouteName={INITIAL_ROUTE_NAME}
     >
       <BottomTab.Screen
-        name="Songbook"
-        component={HomeScreen}
+        name="Links"
+        component={SetListStack}
         options={{
-          title: "SongBook",
-          tabBarIcon: ({ focused, horizontal, tintColor }) => (
-            <TabBarIcon focused={focused} name="md-book" />
+          title: "Home",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} name="md-list-box" />
           ),
         }}
       />
       <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
+        name="Songbook"
+        component={SongBook}
         options={{
-          title: "My PlayList",
+          title: "SongBook",
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="md-list-box" />
+            <TabBarIcon focused={focused} name="md-book" />
+          ),
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Settings"
+        component={SetListStack}
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} name="md-settings" />
           ),
         }}
       />

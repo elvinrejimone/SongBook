@@ -6,7 +6,7 @@ import Toast from "react-native-tiny-toast";
 function StayAwakePicker(props) {
   const [isON, setIsON] = useState(false);
 
-  changeWakeSetting = (value) => {
+  const changeWakeSetting = (value) => {
     if (value == true) {
       activateKeepAwake();
       setIsON(true);

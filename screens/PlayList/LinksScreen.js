@@ -1,40 +1,51 @@
 import { Ionicons } from "@expo/vector-icons";
-import * as WebBrowser from "expo-web-browser";
 import * as React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  SafeAreaView,
+} from "react-native";
 import { RectButton, ScrollView } from "react-native-gesture-handler";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
+const Tab = createMaterialTopTabNavigator();
+import SearchableList from "../SongBook/SearchableList";
+import AllPlaylists from "./AllPlaylists";
+import FavoritesPage from "./FavoritesPage";
+import TeamsPage from "./TeamsPage";
 
 export default function LinksScreen() {
   return (
-    <View style={styles.container}>
-      <View style={styles.displayerView}>
-        <Image
-          style={styles.findingImage}
-          source={require("../../assets/images/lookingAtBoard.png")}
+    <SafeAreaView style={styles.container}>
+      <Tab.Navigator
+        initialRouteName="Playlists"
+        tabBarOptions={{
+          activeTintColor: "#fff",
+          labelStyle: { fontSize: 14, fontWeight: "bold" },
+          indicatorStyle: { backgroundColor: "#fff" },
+          style: { backgroundColor: "tomato" },
+        }}
+      >
+        <Tab.Screen
+          name="Playlists"
+          component={AllPlaylists}
+          options={{ tabBarLabel: "Playlist" }}
         />
-        <Text style={{ marginTop: 30, color: "#f4511e", fontSize: 25 }}>
-          Login to Setup
-        </Text>
-      </View>
-    </View>
-  );
-}
-
-function OptionButton({ icon, label, onPress, isLastOption }) {
-  return (
-    <RectButton
-      style={[styles.option, isLastOption && styles.lastOption]}
-      onPress={onPress}
-    >
-      <View style={{ flexDirection: "row" }}>
-        <View style={styles.optionIconContainer}>
-          <Ionicons name={icon} size={22} color="rgba(0,0,0,0.35)" />
-        </View>
-        <View style={styles.optionTextContainer}>
-          <Text style={styles.optionText}>{label}</Text>
-        </View>
-      </View>
-    </RectButton>
+        <Tab.Screen
+          name="favorites"
+          component={FavoritesPage}
+          options={{ tabBarLabel: "Favorites" }}
+        />
+        <Tab.Screen
+          name="Teams"
+          component={TeamsPage}
+          options={{ tabBarLabel: "Teams" }}
+        />
+      </Tab.Navigator>
+    </SafeAreaView>
   );
 }
 
