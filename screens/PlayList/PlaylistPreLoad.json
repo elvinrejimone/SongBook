@@ -1,0 +1,42 @@
+[
+  {
+    "id": "01",
+    "name": "Playlist 1",
+    "song_count": 0,
+    "type": "userlocal",
+    "isOnline": "false",
+    "playlist_key": "testplay00",
+    "note": "",
+    "updated_time": ""
+  },
+  {
+    "id": "02",
+    "name": "Playlist 2",
+    "song_count": 0,
+    "type": "userlocal",
+    "isOnline": "false",
+    "playlist_key": "testplay01",
+    "note": "",
+    "updated_time": ""
+  },
+  {
+    "id": "03",
+    "name": "Playlist 3",
+    "song_count": 0,
+    "type": "userlocal",
+    "isOnline": "false",
+    "playlist_key": "testplay02",
+    "note": "",
+    "updated_time": ""
+  },
+  {
+    "id": "04",
+    "name": "Playlist 4",
+    "song_count": 0,
+    "type": "userlocal",
+    "isOnline": "false",
+    "playlist_key": "testplay03",
+    "note": "",
+    "updated_time": ""
+  }
+]
